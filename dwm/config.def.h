@@ -60,11 +60,13 @@ static const char *termcmd[]    = { "kitty", NULL };
 static const char *browsercmd[] = { "firefox-developer-edition", NULL };
 
 /* XF86 keys */
-static const char *inclight[]  = { "xbacklight", "-inc", "5" };
-static const char *declight[]  = { "xbacklight", "-dec", "5" };
-static const char *incvol[]    = { "amixer", "-q", "sset", "Master", "5%+" };
-static const char *decvol[]    = { "amixer", "-q", "sset", "Master", "5%-" };
-static const char *mutevol[]   = { "amixer", "set", "Master", "1+", "toggle" };
+static const char *inclight[]     = { "xbacklight", "-inc", "5" };
+static const char *declight[]     = { "xbacklight", "-dec", "5" };
+static const char *incvol[]       = { "amixer", "-q", "sset", "Master", "5%+" };
+static const char *decvol[]       = { "amixer", "-q", "sset", "Master", "5%-" };
+static const char *mutevol[]      = { "amixer", "set", "Master", "1+", "toggle" };
+static const char *pausespotify[] = { "dbus-send", "--print-reply", "--dest=org.mpris.MediaPlayer2.spotify", 
+                                      "/org/mpris/MediaPlayer2", "org.mpris.MediaPlayer2.Player.PlayPause" };
 
 #include "movestack.c"
 static Key keys[] = {
@@ -72,11 +74,13 @@ static Key keys[] = {
 	{ MODKEY,                       XK_space,  spawn,          {.v = roficmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      spawn,          {.v = browsercmd } },
+	{ MODKEY,                       XK_p,      spawn,          {.v = pausespotify } },
     { 0,             XF86XK_MonBrightnessUp,   spawn,          {.v = inclight}},
     { 0,             XF86XK_MonBrightnessDown, spawn,          {.v = declight}},
     { 0,             XF86XK_AudioRaiseVolume,  spawn,          {.v = incvol}},
     { 0,             XF86XK_AudioLowerVolume,  spawn,          {.v = decvol}},
     { 0,             XF86XK_AudioMute,         spawn,          {.v = mutevol}},
+    { 0,             XF86XK_AudioPlay,         spawn,          {.v = pausespotify}},
 	{ MODKEY|ShiftMask,             XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
