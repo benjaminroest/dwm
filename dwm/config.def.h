@@ -58,11 +58,23 @@ static const Layout layouts[] = {
 static const char *roficmd[] = { "rofi", "-show", "drun", "-config", "/home/benjamin/.config/rofi/appLauncher.rasi" };
 static const char *termcmd[] = { "kitty", NULL };
 
+/* XF86 keys */
+static const char *inclight[]  = { "xbacklight", "-inc", "5" };
+static const char *declight[]  = { "xbacklight", "-dec", "5" };
+static const char *incvol[]    = { "amixer", "-q", "sset", "Master", "5%+" };
+static const char *decvol[]    = { "amixer", "-q", "sset", "Master", "5%-" };
+static const char *mutevol[]   = { "amixer", "set", "Master", "1+", "toggle" };
+
 #include "movestack.c"
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_space,  spawn,          {.v = roficmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
+    { 0,             XF86XK_MonBrightnessUp,   spawn,          {.v = inclight}},
+    { 0,             XF86XK_MonBrightnessDown, spawn,          {.v = declight}},
+    { 0,             XF86XK_AudioRaiseVolume,  spawn,          {.v = incvol}},
+    { 0,             XF86XK_AudioLowerVolume,  spawn,          {.v = decvol}},
+    { 0,             XF86XK_AudioMute,         spawn,          {.v = mutevol}},
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
