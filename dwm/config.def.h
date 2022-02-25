@@ -56,7 +56,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static const char *roficmd[]    = { "rofi", "-show", "drun", "-config", "/home/benjamin/.config/rofi/appLauncher.rasi" };
-static const char *termcmd[]    = { "kitty", NULL };
+static const char *termcmd[]    = { "alacritty", NULL };
 static const char *browsercmd[] = { "firefox-developer-edition", NULL };
 
 /* XF86 keys */
@@ -91,6 +91,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 	{ MODKEY|ShiftMask,             XK_Return, zoom,           {0} },
+    { MODKEY|ShiftMask,             XK_f,      togglefullscr,  {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,                       XK_q,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
