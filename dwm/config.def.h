@@ -8,11 +8,11 @@ static const int horizpadbar        = 5;        /* horizontal padding for status
 static const int vertpadbar         = 5;        /* vertical padding for statusbar */
 static const char *fonts[]          = { "monospace:size=10" };
 static const char dmenufont[]       = "monospace:size=10";
-static const char col_gray1[]       = "#222222";
-static const char col_gray2[]       = "#444444";
-static const char col_gray3[]       = "#bbbbbb";
-static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#005577";
+static const char col_gray1[]       = "#1E1D2D";
+static const char col_gray2[]       = "#1E1D2D";
+static const char col_gray3[]       = "#C3BAC6";
+static const char col_gray4[]       = "#D9E0EE";
+static const char col_cyan[]        = "#302D41";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
@@ -66,7 +66,7 @@ static const char *declight[]     = { "xbacklight", "-dec", "5" };
 static const char *incvol[]       = { "amixer", "-q", "sset", "Master", "5%+" };
 static const char *decvol[]       = { "amixer", "-q", "sset", "Master", "5%-" };
 static const char *mutevol[]      = { "amixer", "set", "Master", "1+", "toggle" };
-static const char *pausespotify[] = { "dbus-send", "--print-reply", "--dest=org.mpris.MediaPlayer2.spotify", 
+static const char *pausespotify[] = { "dbus-send", "--print-reply", "--dest=org.mpris.MediaPlayer2.spotify",
                                       "/org/mpris/MediaPlayer2", "org.mpris.MediaPlayer2.Player.PlayPause" };
 
 #include "movestack.c"
@@ -133,4 +133,3 @@ static Button buttons[] = {
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
 };
-
