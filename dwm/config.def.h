@@ -68,6 +68,10 @@ static const char *decvol[]       = { "amixer", "-q", "sset", "Master", "5%-" };
 static const char *mutevol[]      = { "amixer", "set", "Master", "1+", "toggle" };
 static const char *pausespotify[] = { "dbus-send", "--print-reply", "--dest=org.mpris.MediaPlayer2.spotify",
                                       "/org/mpris/MediaPlayer2", "org.mpris.MediaPlayer2.Player.PlayPause" };
+static const char *previousspotify[] = { "dbus-send", "--print-reply", "--dest=org.mpris.MediaPlayer2.spotify",
+                                      "/org/mpris/MediaPlayer2", "org.mpris.MediaPlayer2.Player.Previous" };
+static const char *nextspotify[] = { "dbus-send", "--print-reply", "--dest=org.mpris.MediaPlayer2.spotify",
+                                      "/org/mpris/MediaPlayer2", "org.mpris.MediaPlayer2.Player.Next" };
 
 #include "movestack.c"
 static Key keys[] = {
@@ -76,6 +80,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      spawn,          {.v = browsercmd } },
 	{ MODKEY,                       XK_p,      spawn,          {.v = pausespotify } },
+	{ MODKEY,        XK_bracketleft,           spawn,          {.v = previousspotify } },
+	{ MODKEY,        XK_bracketright,          spawn,          {.v = nextspotify } },
     { 0,             XF86XK_MonBrightnessUp,   spawn,          {.v = inclight}},
     { 0,             XF86XK_MonBrightnessDown, spawn,          {.v = declight}},
     { 0,             XF86XK_AudioRaiseVolume,  spawn,          {.v = incvol}},

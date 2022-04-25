@@ -1,4 +1,5 @@
 #!/bin/sh
 
 feh --bg-fill ~/Pictures/Wallpapers/wallpaper.jpg &
+~/.config/dwm/scripts/./bar.sh &
 ~/.config/dwm/scripts/./dwmstart
